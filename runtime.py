@@ -52,7 +52,7 @@ if __name__ == "__main__":
                         writeTemp.close()
                         os.system("chmod +x TempScript.sh")
                         os.system("./TempScript.sh")
-                        #os.system("rm TempScript.sh")
+                        os.system("rm TempScript.sh")
                     if string_data.split("\n")[0].lower() == "python":
                         print("Executing Python script")
                         writeTemp = open("TempScript.py","a")

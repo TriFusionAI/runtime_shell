@@ -1,10 +1,4 @@
 import os
-print("ZeroneLabs Systems")
-print("Checking Dependencies")
-os.system("pip install json")
-os.syetem("pip install colorama")
-os.system("sudo apt install curl -y")
-
 import sys
 import subprocess
 import json
@@ -30,7 +24,7 @@ if __name__ == "__main__":
     print("\n\n")
     while True:
         print(Back.BLACK)
-        get_input = input("(⌐■_■)> ")
+        get_input = input(Back.BLUE+"♜ RunTime v2.0 | (⌐■_■)> "+Back.BLACK)
         if get_input == "clr_mem":
             prevData = ""
             os.system("tput bel")
@@ -40,7 +34,7 @@ if __name__ == "__main__":
         loopbackToModel = data
         for i in split_string(data):
             if i != "`":
-                time.sleep(0.001)
+                time.sleep(0.005)
                 sys.stdout.write("\033[1m"+i)
                 sys.stdout.flush()
         if "```" in data:
@@ -83,5 +77,6 @@ if __name__ == "__main__":
                         os.system("rm TempScript.c")
                         os.system("rm temp")
             except:
+                #print(Back.GREEN + " | ZeroneLabs | ♜ RunTime v2.0 | PaLM v2 | "+Back.BLACK)
                 print("/ ! \\")
         sys.stdout.write("\033[0m")

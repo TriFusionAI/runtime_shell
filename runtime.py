@@ -11,7 +11,7 @@ loopbackToModel = ""
 
 def commGPT(data):
     global prevData, loopbackToModel
-    prevData = prevData+data
+    prevData = prevData+",NewData:"+data
     __commOS = 'python gpt_response.py \"'+str(prevData)+'\"'
     return subprocess.check_output(__commOS, shell=True, stderr=subprocess.STDOUT, universal_newlines=True)
 
@@ -76,6 +76,16 @@ if __name__ == "__main__":
                         os.system("./temp")
                         os.system("rm TempScript.c")
                         os.system("rm temp")
+                    else:
+                        print("Executing bash script")
+                        writeTemp = open("TempScript.sh","a")
+                        string_data = string_data.split("\n")
+                        for i in string_data:
+                            writeTemp.write(i+"\n")
+                        writeTemp.close()
+                        os.system("chmod +x TempScript.sh")
+                        os.system("./TempScript.sh")
+                        os.system("rm TempScript.sh")
             except:
                 #print(Back.GREEN + " | ZeroneLabs | ♜ RunTime v2.0 | PaLM v2 | "+Back.BLACK)
                 print("/ ! \\")

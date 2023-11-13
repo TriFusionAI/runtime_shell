@@ -4,7 +4,7 @@ import json
 import requests
 
 def __reqOut(chat_session):
-    url = "https://generativelanguage.googleapis.com/v1beta3/models/text-bison-001:generateText?key=AIzaSyC-g6QFIoAGlEMnf61v6iSbL5NJwbxnhEM"
+    url = "https://generativelanguage.googleapis.com/v1beta3/models/text-bison-001:generateText?key=YOUR_KEY"
     headers = {"Content-Type": "application/json"}
 
     prompt = {

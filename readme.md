@@ -1,3 +1,3 @@
-> Setting up gpt_response.py
+> Setting up runtime
 
-*Add your google PaLM API to "YOUR_API" section in gpt_response.py file...
+Type *python runtimeInstaller.py* to start the installation. Once the installation is completed, type *python runtime.py*

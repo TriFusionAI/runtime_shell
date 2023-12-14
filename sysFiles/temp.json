@@ -1,0 +1,33 @@
+{
+  "candidates": [
+    {
+      "output": "There are many reasons why people like movies. Some of the reasons include:\n\n* **Entertainment:** Movies can provide a form of entertainment that is both stimulating and relaxing. They can take us away from our everyday lives and transport us to another world.\n* **Escape:** Movies can provide an escape from the stresses of everyday life. They can allow us to forget our problems and immerse ourselves in a different reality.\n* **Learning:** Movies can be a great way to learn about new things. They can teach us about different cultures, historical events, and scientific concepts.\n* **Connection:** Movies can help us connect with others. They can provide a shared experience that can bring people together.\n* **Reflection:** Movies can allow us to reflect on our own lives and experiences. They can help us to understand ourselves and our place in the world.\n\nOf course, not all movies are created equal. Some movies are more entertaining than others, and some movies are more educational than others. But all movies have the potential to provide some kind of value to the viewer.\n\nIf you're looking for a good movie to watch, there are a few things you can keep in mind. First, think about what you're looking for in a movie. Do you want to be entertained? Do you want to learn something new? Do you want to connect with others? Once you know what you're looking for, you can start to narrow down your choices.\n\nThere are many resources available to help you find good movies. You can read reviews, check out lists of top movies, or ask for recommendations from friends or family. With a little effort, you're sure to find a movie that you enjoy.",
+      "safetyRatings": [
+        {
+          "category": "HARM_CATEGORY_DEROGATORY",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_TOXICITY",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_VIOLENCE",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_SEXUAL",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_MEDICAL",
+          "probability": "NEGLIGIBLE"
+        },
+        {
+          "category": "HARM_CATEGORY_DANGEROUS",
+          "probability": "NEGLIGIBLE"
+        }
+      ]
+    }
+  ]
+}

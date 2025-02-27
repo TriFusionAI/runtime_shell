@@ -29,7 +29,7 @@ def main():
     statement = sys.argv[1]
 
     # Number of workers
-    num_workers = int(open("sysFiles/workers.zttf","r").read().replace("\n",""))
+    num_workers = int(open("/home/zerone/Projects/runtime2/sysFiles/workers.zttf","r").read().replace("\n",""))
 
     # Using ThreadPoolExecutor to run tasks concurrently
     with ThreadPoolExecutor(max_workers=num_workers) as executor:

@@ -1,3 +1,5 @@
-> Setting up runtime
+# Introducing Runtime Shell 'RSH'
 
-Type *python runtimeInstaller.py* to start the installation. Once the installation is completed, type *python runtime.py*
+ A natural language-driven interface that enhances user interaction with their computing environment.
+ Designed for students, interns, and professionals, this system enables users to execute commands, manage files, schedule events, and perform various
+ system tasks using conversational input rather than traditional command-line syntax

@@ -1,22 +1,28 @@
 import os
 
-print("Initializing the installtion...")
-os.system("pip install google-generativeai")
-os.system("pip install spacy")
-#os.system("pip install subprocess")
-os.system("pip install colorama")
-os.system("pip install textblob")
-
-print("\n\nTesting Runtime Context Breakdown system...")
-workers = input("Enter the number of cores in your CPU (Default : 2):")
-open("sysFiles/workers.zttf","w").write(workers)
-os.system("python sysFiles/cbs.py 'runtime context breakdown system check'")
+print("Initializing the installation...")
+print("TriFusion - Runtime Shell v2.0")
+print("Setting up the runtime environment...")
+os.system("pip install -r requirements.txt")
 
 print("\n\nTesting gpt response output")
-api = input("Enter Google AI Studio API (You can retrieve this from https://makersuite.google.com/app/apikey for free):")
-open("sysFiles/api.txt","w").write(api)
-os.system("python sysFiles/gpt_response.py 'Introduce yourself'")
+api = input("Enter GROQ API[visit: https://console.groq.com/keys]:")
+
+config_dir = os.path.expanduser("~/.rtconf")
+os.makedirs(config_dir, exist_ok=True)
+
+api_file_path = os.path.join(config_dir, "api.txt")
+with open(api_file_path, "w") as f:
+    f.write(api)
+
+api = open(os.path.expanduser("~/.rtconf/api.txt"), "r").read()
+os.environ["GROQ_API_KEY"] = api
+
+print("Testing the runtimeEngine")
+from core.rt_serve import runtimeEngine
+runtime = runtimeEngine()
+print(runtime.predict("Say Hello to the user"))
 
 print("\n\n!!! Check complete, to run the program, To start the system, type :python runtime.py !!!")
-print("\nIf any issues occured while setting up the workers or the API, re-run this script to reconfigure...")
-print("\n\nZeroneLabs\n\n") 
+print("\nIf any issues occurred while setting up the workers or the API, re-run this script to reconfigure...")
+print("\n\nTriFusion\n\n")

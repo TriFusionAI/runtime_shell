@@ -14,6 +14,9 @@ prevData = ""
 loopbackToModel = ""
 anim = 1
 
+# Retrieve and export api
+api = open("~/.rtconf/api.txt", "r").read()
+os.system(f"export GROQ_API_KEY={api}")
 # Initialize Runtime Backend
 runtime = runtimeEngine()
 

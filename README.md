@@ -3,3 +3,22 @@
  A natural language-driven interface that enhances user interaction with their computing environment.
  Designed for students, interns, and professionals, this system enables users to execute commands, manage files, schedule events, and perform various
  system tasks using conversational input rather than traditional command-line syntax
+
+## How to install ?
+Requirements:
+- python 3.x.x
+- System with an NVIDIA CUDA compatible GPU
+
+```
+python runtimeInstaller.py
+^ Follow the instructions of this program
+
+python runtime.py
+```
+
+# TODO
+- Memory Chain [DONE]
+- RAG Chain [PARTIAL]
+- HyperScaan [-]
+- OnlineMode with Groq [DONE]
+- OfflineMode with ollama & CUDA [-]

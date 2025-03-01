@@ -9,6 +9,9 @@ Requirements:
 - python 3.x.x
 - System with a NVIDIA CUDA compatible GPU
 
+Download mongodb community server
+https://www.mongodb.com/try/download/community
+
 ```
 python runtimeInstaller.py
 ^ Follow the instructions of this program

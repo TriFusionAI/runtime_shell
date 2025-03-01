@@ -1,0 +1,19 @@
+import os
+import webbrowser
+import time
+
+os.system('pip install pyautogui')
+import pyautogui
+
+def open_browser_search():
+    url = "https://www.google.com"
+    webbrowser.open(url)
+    time.sleep(5)
+    pyautogui.typewrite('hdtoday')
+    pyautogui.press('enter')
+    time.sleep(5)
+    pyautogui.typewrite('dexter')
+    pyautogui.press('enter')
+
+open_browser_search()
+

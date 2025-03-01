@@ -7,7 +7,7 @@
 ## How to install ?
 Requirements:
 - python 3.x.x
-- System with an NVIDIA CUDA compatible GPU
+- System with a NVIDIA CUDA compatible GPU
 
 ```
 python runtimeInstaller.py

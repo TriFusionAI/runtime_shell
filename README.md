@@ -25,3 +25,4 @@ python runtime.py
 - HyperScaan [-]
 - OnlineMode with Groq [DONE]
 - OfflineMode with ollama & CUDA [-]
+- Update the 2 year old TUi to modern standards [-]

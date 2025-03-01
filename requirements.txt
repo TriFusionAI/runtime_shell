@@ -5,4 +5,3 @@ langchain-groq
 pymongo
 langchain-community
 langchain-chroma
-pymongo

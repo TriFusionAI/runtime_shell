@@ -15,8 +15,14 @@ loopbackToModel = ""
 anim = 1
 
 # Retrieve and export api
-api = open("~/.rtconf/api.txt", "r").read()
-os.system(f"export GROQ_API_KEY={api}")
+api_path = os.path.expanduser("~/.rtconf/api.txt")
+try:
+    with open(api_path, "r") as file:
+        api = file.read().strip()
+        os.environ["GROQ_API_KEY"] = api
+        print("API key set successfully.")
+except FileNotFoundError:
+    print(f"File not found: {api_path}")
 # Initialize Runtime Backend
 runtime = runtimeEngine()
 

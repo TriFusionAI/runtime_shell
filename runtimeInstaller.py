@@ -18,6 +18,8 @@ with open(api_file_path, "w") as f:
 api = open(os.path.expanduser("~/.rtconf/api.txt"), "r").read()
 os.environ["GROQ_API_KEY"] = api
 
+os.system("python core/db_conn.py")
+
 print("Testing the runtimeEngine")
 from core.rt_serve import runtimeEngine
 runtime = runtimeEngine()

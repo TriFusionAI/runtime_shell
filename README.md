@@ -22,7 +22,7 @@ python runtime.py
 # TODO
 - Memory Chain [DONE]
 - RAG Chain [PARTIAL]
-- HyperScaan [-]
+- HyperScan [-]
 - OnlineMode with Groq [DONE]
 - OfflineMode with ollama & CUDA [-]
 - Update the 2 year old Prototype TUi to modern standards [-]

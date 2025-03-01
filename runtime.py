@@ -43,43 +43,74 @@ def commGPT(data):
     return __commOS
 
 
+# def execute_script(language, script_content):
+#     script_file_name = "TempScript"
+#     executable_name = "temp"
+#     save_file = data.replace(" ", "_")
+
+#     print(f"Executing {language} script")
+
+#     with open(script_file_name, "w") as write_temp:
+#         script_lines = script_content.split("\n")[1:]
+#         print(script_lines)
+#         for line in script_lines:
+#             write_temp.write(line.replace("python", "#python") + "\n")
+
+#         with open(save_file, "w") as write_temp_2:
+#             script_lines = script_content.split("\n")[1:]
+#             for line in script_lines:
+#                 write_temp_2.write(line + "\n")
+
+#     # if language.lower() == "c":
+#     #     print("Compiling Resource...")
+#     #     os.system(f"gcc {script_file_name} -o {executable_name}")
+#     #     os.system(f"./{executable_name}")
+#     # elif language.lower() == "python":
+#     #     print(Back.MAGENTA + "Initializing Python Interpreter...\n" + Back.RESET)
+#     #     run_result = subprocess.run(f"python {script_file_name}", shell=True, capture_output=True)
+
+#     #     if run_result.returncode != 0:
+#     #         print("Error during execution:\n", run_result.stderr.decode())
+#     #         return 2
+#     #     print("\nProgram Completed" + Back.RESET)
+#     #     return 0
+#     #     # os.system(f"./{executable_name}")
+#     # else:
+#     #     os.system(f"chmod +x {script_file_name}")
+#     #     os.system(f"./{script_file_name}")
+
+#         print(Back.MAGENTA + "Initializing Python Interpreter...\n" + Back.RESET)
+#         # run_result = subprocess.run(f"python {script_file_name}", shell=True, capture_output=True)
+#         print(open(script_file_name, "r").read())
+#         os.system(f"python {script_file_name}")
+#         print("\nProgram Completed" + Back.RESET)
+#         return 0
+
+#     os.system(f"rm {script_file_name}")
+
 def execute_script(language, script_content):
     script_file_name = f"TempScript.{language.lower()}"
     executable_name = "temp"
-    save_file = data.replace(" ", "_")
 
-    print(f"Executing {language} script")
+    print(f"\n// Executing {language} script")
 
     with open(script_file_name, "w") as write_temp:
         script_lines = script_content.split("\n")[1:]
+        if "python" in script_lines[0]:
+            script_lines[0] = script_lines[0].replace("python", "#python")
         for line in script_lines:
-            write_temp.write(line.replace("python", "#python") + "\n")
-
-    # with open(save_file, "w") as write_temp_2:
-    #     script_lines = script_content.split("\n")[1:]
-    #     for line in script_lines:
-    #         write_temp_2.write(line + "\n")
+            write_temp.write(line + "\n")
 
     if language.lower() == "c":
         print("Compiling Resource...")
         os.system(f"gcc {script_file_name} -o {executable_name}")
         os.system(f"./{executable_name}")
-    elif language.lower() == "python":
-        print(Back.MAGENTA + "Initializing Python Interpreter...\n" + Back.RESET)
-        run_result = subprocess.run(f"python {script_file_name}", shell=True, capture_output=True)
-
-        if run_result.returncode != 0:
-            print("Error during execution:\n", run_result.stderr.decode())
-            return 2
-        print("\nProgram Completed" + Back.RESET)
-        return 0
-        # os.system(f"./{executable_name}")
     else:
-        os.system(f"chmod +x {script_file_name}")
-        os.system(f"./{script_file_name}")
+        print(Back.MAGENTA + "Initializing Python Interpreter...\n" + Back.RESET)
+        os.system(f"python {script_file_name}")
+        #os.system(f"./{executable_name}")
 
     os.system(f"rm {script_file_name}")
-
 
 def loading_animation():
     global anim
@@ -155,8 +186,10 @@ if __name__ == "__main__":
                 get_input = get_input_memory
                 break
             get_input_memory = get_input
-            while True:
+            # while True:
+            if True:
                 data = commGPT(get_input)
+                data = data.replace("**Python**", "")
                 anim = 1
                 time.sleep(0.8)
                 print("\n")
@@ -180,17 +213,7 @@ if __name__ == "__main__":
                     else:
                         script_data = data.replace("```", "")
                         script_language = script_data.split("\n")[0].lower()
-
-                        if script_language in ["bash", "python", "c"]:
-                            if execute_script(script_language, script_data) == 2:
-                                print("Script Execution Failed !")
-                                pass
-                            break
-                        else:
-                            if execute_script(script_language, script_data) == 2:
-                                print("Script Execution Failed !")
-                                pass
-                            break
+                        execute_script(script_language, script_data)
         except:
             print("/!\\")
             anim = 1

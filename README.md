@@ -26,3 +26,5 @@ python runtime.py
 - OnlineMode with Groq [DONE]
 - OfflineMode with ollama & CUDA [-]
 - Update the 2 year old Prototype TUi to modern standards [-]
+- Sandboxed Execution Environment with multi-language support [Partial]
+- Execution System [Only Python]

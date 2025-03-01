@@ -1,6 +1,0 @@
-#python
-import os
-os.system('git add .')
-os.system('git commit -m "new updates"')
-os.system('git push')
-

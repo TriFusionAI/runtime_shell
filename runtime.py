@@ -201,7 +201,7 @@ if __name__ == "__main__":
                         #     sys.stdout.write("\n")
                         #     sys.stdout.flush()
                         #     current_line_length = 0
-                        time.sleep(0.01)
+                        # time.sleep(0.01)
                         sys.stdout.write("\033[1m" + char)
                         sys.stdout.flush()
                 if "```" in data:

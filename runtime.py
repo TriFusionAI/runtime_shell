@@ -7,6 +7,7 @@ from colorama import Back
 import keyboard
 import threading
 import shutil
+import asyncio
 from core.rt_serve import runtimeEngine
 
 global anim, prevData, loopbackToModel, data, runtime
@@ -36,11 +37,17 @@ def clear_memory():
     print(Back.RED + "Memory Reset !" + Back.BLACK)
 
 
-def commGPT(data):
+async def commGPT(data):
     global prevData, loopbackToModel, anim, runtime
     data = data.replace("clr_mem", "")
-    __commOS = runtime.predict(data)
-    return __commOS
+    try:
+        __commOS = await runtime.mcp_call(data)
+        return __commOS
+    except Exception as e:
+        # Fallback to regular prediction if online call fails
+        print(f"Online call failed: {e}")
+        print("Falling back to legacy mode...")
+        return runtime.predict(data)
 
 
 # def execute_script(language, script_content):
@@ -88,29 +95,29 @@ def commGPT(data):
 
 #     os.system(f"rm {script_file_name}")
 
-def execute_script(language, script_content):
-    script_file_name = f"TempScript.{language.lower()}"
-    executable_name = "temp"
+# def execute_script(language, script_content):
+#     script_file_name = f"TempScript.{language.lower()}"
+#     executable_name = "temp"
 
-    print(f"\n// Executing {language} script")
+#     print(f"\n// Executing {language} script")
 
-    with open(script_file_name, "w") as write_temp:
-        script_lines = script_content.split("\n")[1:]
-        if "python" in script_lines[0]:
-            script_lines[0] = script_lines[0].replace("python", "#python")
-        for line in script_lines:
-            write_temp.write(line + "\n")
+#     with open(script_file_name, "w") as write_temp:
+#         script_lines = script_content.split("\n")[1:]
+#         if "python" in script_lines[0]:
+#             script_lines[0] = script_lines[0].replace("python", "#python")
+#         for line in script_lines:
+#             write_temp.write(line + "\n")
 
-    if language.lower() == "c":
-        print("Compiling Resource...")
-        os.system(f"gcc {script_file_name} -o {executable_name}")
-        os.system(f"./{executable_name}")
-    else:
-        print(Back.MAGENTA + "Initializing Python Interpreter...\n" + Back.RESET)
-        os.system(f"python {script_file_name}")
-        #os.system(f"./{executable_name}")
+#     if language.lower() == "c":
+#         print("Compiling Resource...")
+#         os.system(f"gcc {script_file_name} -o {executable_name}")
+#         os.system(f"./{executable_name}")
+#     else:
+#         print(Back.MAGENTA + "Initializing Python Interpreter...\n" + Back.RESET)
+#         os.system(f"python {script_file_name}")
+#         #os.system(f"./{executable_name}")
 
-    os.system(f"rm {script_file_name}")
+#     os.system(f"rm {script_file_name}")
 
 def loading_animation():
     global anim
@@ -188,7 +195,7 @@ if __name__ == "__main__":
             get_input_memory = get_input
             # while True:
             if True:
-                data = commGPT(get_input)
+                data = asyncio.run(commGPT(get_input))
                 data = data.replace("**Python**", "")
                 anim = 1
                 time.sleep(0.8)
@@ -204,16 +211,17 @@ if __name__ == "__main__":
                         # time.sleep(0.01)
                         sys.stdout.write("\033[1m" + char)
                         sys.stdout.flush()
-                if "```" in data:
-                    if len(sys.argv) > 1:
-                        if sys.argv[1] == "safeMode":
-                            print(
-                                "Runtime Is running in Safemode !, Script Execution is not permitted..."
-                            )
-                    else:
-                        script_data = data.replace("```", "")
-                        script_language = script_data.split("\n")[0].lower()
-                        execute_script(script_language, script_data)
-        except:
+                # if "```" in data:
+                #     if len(sys.argv) > 1:
+                #         if sys.argv[1] == "safeMode":
+                #             print(
+                #                 "Runtime Is running in Safemode !, Script Execution is not permitted..."
+                #             )
+                #     else:
+                #         script_data = data.replace("```", "")
+                #         script_language = script_data.split("\n")[0].lower()
+                #         # execute_script(script_language, script_data)
+        except Exception as e:
+            print("\nAn error occurred:", e)
             print("/!\\")
             anim = 1
